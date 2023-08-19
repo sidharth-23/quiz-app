@@ -1,13 +1,13 @@
-const startButton = document.createElement('button');
-startButton.innerText = 'Start Exam';
-startButton.className = 'button';
-startButton.addEventListener('click', startExam);
+const startButton = document.createElement('button');//This line creates a new HTML <button> element and assigns it to the constant variable startButton.
+startButton.innerText = 'Start Exam';//set text content to Start Exam
+startButton.className = 'button';//assign a css classname for styling purpose.
+startButton.addEventListener('click', startExam);// event listener for the function startExam to work.
 
-const contentDiv = document.getElementById('content');
-contentDiv.appendChild(startButton);
+const contentDiv = document.getElementById('content');//gets the element with the id of content and assigns it to the constant variable of contentDiv
+contentDiv.appendChild(startButton);//here the startButton we created is appended to the contentDiv
 
-const dateElement = document.getElementById('date');
-const timeElement = document.getElementById('time');
+const dateElement = document.getElementById('date');//retireves the element with the id of date and assigns it to a variable called dateElement
+const timeElement = document.getElementById('time');//retireves the element with the id of time and assigns it to a variable called timeElement
 
 let timeRemaining = 600; // 10 minutes in seconds
 let interval;
@@ -71,18 +71,18 @@ let currentQuestionIndex = 0;
 let userAnswers = [];
 
 function updateTime() {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    timeElement.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
-    timeRemaining--;
+    const minutes = Math.floor(timeRemaining / 60);//which basically means we get 10 minutes
+    const seconds = timeRemaining % 60;//here we get 00
+    timeElement.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;//we access the timeElement variable and their text content and add this timer there
+    timeRemaining--;//decrementing
 
     if (timeRemaining < 0) {
-        clearInterval(interval);
-        showTimeoutScreen();
+        clearInterval(interval);// when the time gets to negative we clear the timer.
+        showTimeoutScreen();//function to show the timeoutscreen
     }
 }
 
-function startExam() {
+function startExam() {//this function is called when we click on the start button
     contentDiv.innerHTML = ''; // Clear content
     
     // Reset the timer
